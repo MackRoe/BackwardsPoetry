@@ -9,6 +9,16 @@ Come in!
 Come in!"""
 
 
+def load_poem():
+    f = open('poem1.txt', 'r')
+    poem1 = f.readlines()
+    f.close()
+    # testing
+    print(poem1)
+    lines = poem1.split("\n")
+    return lines
+
+
 def lines_printed_backwards(lines):
     '''This function takes in a list of strings containing the lines of your
     poem as arguments and will print the poem lines out in reverse with the
@@ -54,13 +64,28 @@ lines = poem.split("\n")
 # for line in lines:
 #     print(line)
 
-print("** Poetry Fun **")
+
 
 # testing Code
-print("")
-print("Backwards Poem:")
-lines_printed_backwards(lines)
+def print_backwards_poem(lines):
+    print("")
+    print("Backwards Poem:")
+    lines_printed_backwards(lines)
 
+
+def print_randomized_poem(lines):
+    print("")
+    print("Randomized Poem:")
+    lines_printed_random(lines)
+
+print("** Poetry Fun **")
+print_backwards_poem(lines)
+print_randomized_poem(lines)
 print("")
-print("Randomized Poem:")
-lines_printed_random(lines)
+see_next = input("Would you like to see another poem? [Y for yes]")
+while see_next != "Y":
+    see_next = input("Would you like to see another poem? [Y for yes]")
+else:
+    load_poem()
+    print_backwards_poem(lines)
+    print_randomized_poem(lines)
