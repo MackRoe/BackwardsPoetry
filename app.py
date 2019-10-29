@@ -1,3 +1,5 @@
+import random
+
 poem = """If you are a dreamer, come in,
 If you are a dreamer, a wisher, a liar,
 A hope-er, a pray-er, a magic bean buyer…
@@ -21,15 +23,23 @@ def lines_printed_random(lines):
     random order. Repeats are okay and the number of lines printed should be
     equal to the original number of lines in the poem (line numbers don't need
     to be printed). Hint: try using a loop and randint()'''
-
+    # test function is being called correctly
+    # print("-lines_printed_random function called-")
     random_lines = []
-    while len(lines) < 0:
+    # initialize random_lines list
+    list_length = len(lines)
+    # set list_length as an integer representing the length of the list
+    # print("List length is: " + str(list_length))
+    # test list_length is set correctly
+    while list_length >= 0:
         line = random.choice(lines)
-        lines.pop(line)
+        # test that random choice has been made and assigned
+        # print("Randomly chosen line is:" + line)
         random_lines.append(line)
-        lines = random_lines
-    for line in lines:
-        print(line)
+
+        for line in random_lines:
+            print(line)
+            list_length -= 1
 
 
 def my_own_rearrange():
@@ -45,8 +55,10 @@ for line in lines:
     print(line)
 
 # testing Code
+print("")
 print("Backwards Poem:")
 lines_printed_backwards(lines)
 
-# print("Randomized Poem:")
-# lines_printed_random(lines)
+print("")
+print("Randomized Poem:")
+lines_printed_random(lines)
