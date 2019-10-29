@@ -51,8 +51,10 @@ def my_own_rearrange():
 lines = poem.split("\n")
 
 # make prettier output by seperating lines
-for line in lines:
-    print(line)
+# for line in lines:
+#     print(line)
+
+print("** Poetry Fun **")
 
 # testing Code
 print("")
