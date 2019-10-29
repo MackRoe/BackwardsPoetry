@@ -14,8 +14,8 @@ def load_poem():
     poem1 = f.readlines()
     f.close()
     # testing
-    print(poem1)
-    lines = poem1.split("\n")
+    # print(poem1)
+    lines = poem1  # .split("\n")
     return lines
 
 
@@ -59,7 +59,7 @@ def my_own_rearrange():
 
 
 lines = poem.split("\n")
-
+more_lines = load_poem()
 # make prettier output by seperating lines
 # for line in lines:
 #     print(line)
@@ -87,5 +87,5 @@ while see_next != "Y":
     see_next = input("Would you like to see another poem? [Y for yes]")
 else:
     load_poem()
-    print_backwards_poem(lines)
-    print_randomized_poem(lines)
+    print_backwards_poem(more_lines)
+    print_randomized_poem(more_lines)
