@@ -24,8 +24,11 @@ def lines_printed_backwards(lines):
     poem as arguments and will print the poem lines out in reverse with the
     line numbers reversed. '''
     lines.reverse()
-    for line in lines:
-        print(line)
+    numbering = len(lines)
+    for i in range(len(lines)):
+        line = lines[i]
+        print(str(numbering) + " " + line)
+        numbering -= 1
 
 
 def lines_printed_random(lines):
@@ -78,6 +81,16 @@ def print_randomized_poem(lines):
     print("Randomized Poem:")
     lines_printed_random(lines)
 
+def get_user_poem(use_own_poem):
+    if use_own_poem == True:
+        index = input("How many lines is your poem? ")
+        while index <= 0:
+            poem2[index] = input("Enter a line of your poem")
+            index -= 1  # NO NO NO NO NO
+    else:
+        print("Thanks for visiting Backwards Poetry. Have a great day!")
+    pass
+
 print("** Poetry Fun **")
 print_backwards_poem(lines)
 print_randomized_poem(lines)
@@ -89,3 +102,7 @@ else:
     load_poem()
     print_backwards_poem(more_lines)
     print_randomized_poem(more_lines)
+
+# allow user to enter their own poetry
+use_own_poem = input("Would you like to try this with your own poetry?[Y or N] ")
+# get_user_poem()
