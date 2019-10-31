@@ -8,6 +8,8 @@ For we have some flax-golden tales to spin.
 Come in!
 Come in!"""
 
+poem2 = []
+
 
 def load_poem():
     f = open('poem1.txt', 'r')
@@ -81,15 +83,58 @@ def print_randomized_poem(lines):
     print("Randomized Poem:")
     lines_printed_random(lines)
 
-def get_user_poem(use_own_poem):
-    if use_own_poem == True:
-        index = input("How many lines is your poem? ")
-        while index <= 0:
-            poem2[index] = input("Enter a line of your poem")
-            index -= 1  # NO NO NO NO NO
-    else:
-        print("Thanks for visiting Backwards Poetry. Have a great day!")
-    pass
+
+def get_user_poem(use_own_poem, poem2):
+    if use_own_poem:
+        # boolean conditional default is True
+        number_of_lines = input("How many lines is your poem? ")
+        count_lines = 0
+        poem_done = None
+        while count_lines != number_of_lines:
+            if count_lines == 0:
+                poem_line = input("Enter the 1st line of your poem: ")
+                poem2.append(str(poem_line))
+                count_lines += 1
+            elif count_lines == int(number_of_lines) - 1:
+                poem_line = input("Enter last line of your poem: ")
+                poem2.append(poem_line)
+                count_lines += 1
+                poem_done = True
+            elif not poem_done:
+                poem_line = input("Enter next line of your poem: ")
+                poem2.append(poem_line)
+                count_lines += 1
+            else:
+                print("Your poem is complete.")
+                count_lines = number_of_lines
+        return poem2
+
+def display_user_poem(poem2):
+    for line in poem2:
+        print(line)
+
+
+def use_own_poem():
+    get_poem = input("Want to try this with your own poetry?[Y or N] ")
+    if get_poem == "Y":
+        return True
+
+
+def poem_check(poem2, use_own_poem):
+    print("*** YOUR POEM ***")
+    display_user_poem(poem2)
+    poem_check = input("How does it look? [A for awesome or X for Oops] ")
+    while poem_check != "A" or "X":
+        poem_check = input("How does it look? [A for awesome or X for Oops] ")
+        if poem_check == "X":
+            print("Let's try again")
+            get_user_poem(use_own_poem)
+        elif poem_check == "A":
+            print(" ")
+            print("Sweet!")
+            return True
+
+
 
 print("** Poetry Fun **")
 print_backwards_poem(lines)
@@ -104,5 +149,8 @@ else:
     print_randomized_poem(more_lines)
 
 # allow user to enter their own poetry
-use_own_poem = input("Would you like to try this with your own poetry?[Y or N] ")
-# get_user_poem()
+use_own_poem()
+get_user_poem(use_own_poem, poem2)
+poem_check(poem2, use_own_poem)
+print_backwards_poem(poem2)
+print_randomized_poem(poem2)
