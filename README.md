@@ -12,11 +12,11 @@ of the poem.
 with line numbers. Prints a new poem made from random lines of the poem.
 
 _Why?_
-This is an assignment from CS1.1v2 that demonstrates skill with syntax,
+-This is an assignment from CS1.1v2 that demonstrates skill with syntax,
 logic, classes and list manipulation.
 
 _How to Run_
-* Requires Python 3 *
-Copy the files to your machine, then within the Terminal, navigate
+- Requires Python 3
+-Copy the files to your machine, then within the Terminal, navigate
 to it's directory and enter:
 python3 app.py
